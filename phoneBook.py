@@ -120,8 +120,7 @@ def del_contact(name,contacts):
             contacts.remove(contact)
         else:
             print('name does not exist')
-
-
+            
                  
 def contact_info(contacts):
     if len(contacts) != 0:
