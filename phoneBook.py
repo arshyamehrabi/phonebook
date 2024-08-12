@@ -13,6 +13,7 @@ def phonepanel():
     choice = input("Enter your choice: ")
     if choice not in ["1","2","3","4","5","6"]:
         print('not valid')
+        print("---------------------------------")
         phonepanel()
     return choice
 
@@ -111,8 +112,11 @@ def del_contact(name,contacts):
     for contact in contacts:
         if contact['Name'] == name:
             contacts.remove(contact)
-        else:
-            print('name does not exist')
+            print('contact deleted')
+            print("---------------------------------")
+            return   
+    print('name does not exist')
+    print("---------------------------------")
             
                  
 def contact_info(contacts):
