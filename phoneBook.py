@@ -21,33 +21,36 @@ def phonepanel():
     return choice
 
 
-def add_contact(self,contacts):
+def add_contact(name,phoneNumber,email,contacts):
     print(contact_name)
     if len(contacts) != 0:
-        if self.name in contact_name: 
+        if name in contact_name: 
             print('Duplicate entry')
             print("---------------------------------")
             return
     
-    if not re.match(r'^[a-zA-Z\s]+$', self.name):
+    if not re.match(r'^[a-zA-Z\s]+$', name):
         print('name is not correct')
         print("---------------------------------")
         return
-    if not re.match(r'^\d{11}$', self.phoneNumber):
+    if not re.match(r'^\d{11}$', phoneNumber):
         print('number is not correct')
         print("---------------------------------")
         return
-    if not re.match(r'[^@]+@[^@]+\.[^@]+', self.email):
+    if not re.match(r'[^@]+@[^@]+\.[^@]+', email):
         print('email is not correct')
         print("---------------------------------")
         return
-    contacts.append({'Name': self.name, 'Number': self.phoneNumber, 'Email': self.email})
-    contact_name.append(self.name)
-    contact_numner.append(self.phoneNumber)
+    contacts.append({'Name': name, 'Number': phoneNumber, 'Email': email})
+    contact_name.append(name)
+    contact_numner.append(phoneNumber)
     print('Contact added')
     print("---------------------------------")
 
 
+file = open('contact.csv',newline='')
+data = csv.DictReader(file)
+contacts = list(data)
 phonepanel()
 while True:
     if choice == '1':
@@ -55,8 +58,7 @@ while True:
         name = input('Enter name: ')
         phoneNumber = input('Enter phoneNumber: ')
         email = input('Enter email: ')
-        phone = Phone(name,phoneNumber,email)
-        phone.add_contact(contacts)
+        add_contact(name,phoneNumber,email,contacts)
         phonepanel()
 
     if choice == '2':
