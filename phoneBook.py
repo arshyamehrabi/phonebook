@@ -150,7 +150,7 @@ def contact_info(contacts):
 '''def sort_contact()'''
 def storage(contacts):
     file = open("contact.csv", "w", newline="")
-    writer = csv.DictWriter(file, ['Name','Phone Number','Email'])
+    writer = csv.DictWriter(file, ['Name','Number','Email'])
     writer.writeheader()
     writer.writerows(contacts)
     file.close()
