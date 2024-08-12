@@ -22,7 +22,6 @@ def phonepanel():
 
 
 def add_contact(name,phoneNumber,email,contacts):
-    print(contact_name)
     if len(contacts) != 0:
         if name in contact_name: 
             print('Duplicate entry')
@@ -90,6 +89,10 @@ def edit_contact(contacts):
                             print('Duplicate entry')
                             print("---------------------------------")
                             return
+                        if not re.match(r'^\d{11}$', new_number):
+                            print('number is not correct')
+                            print("---------------------------------")
+                            return
                         else:
                             contact_number.remove(contact['Number'])
                             contact['Number'] = new_number
@@ -106,10 +109,14 @@ def edit_contact(contacts):
                             print('Duplicate entry')
                             print("---------------------------------")
                             return
+                        if not re.match(r'[^@]+@[^@]+\.[^@]+', new_email):
+                            print('email is not correct')
+                            print("---------------------------------")
+                            return
                         else:
                             contact_email.remove(contact['Email'])
-                            contact['Email'] = new_number
-                            contact_email.append(new_number)
+                            contact['Email'] = new_email
+                            contact_email.append(new_email)
                             print('Changes were made')
                             print("---------------------------------")
                             return
@@ -118,13 +125,15 @@ def edit_contact(contacts):
 def contact_info(contacts):
     if len(contacts) != 0:
         header = contacts[0].keys()
-        row = "{:<10}"*len(header)
+        row = "{:<15}"*len(header)
         print(row.format(*header))
-        print("-------------------------------------------------")
+        print("-------------------------------------------------------")
         for contact in contacts:
             print(row.format(*contact.values()))
+        print("-------------------------------------------------------")
     else:
         print("There is no contact")
+        print("---------------------------------")
              
 
 
@@ -147,6 +156,7 @@ while True:
 
     if choice == '4':
         contact_info(contacts)
+        phonepanel()
     
 
 
