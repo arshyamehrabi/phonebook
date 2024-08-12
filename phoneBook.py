@@ -148,7 +148,14 @@ def contact_info(contacts):
         print("There is no contact")
         print("---------------------------------")
 
-'''def sort_contact()'''
+
+def sort_contact(contacts):
+    sort_contacts = sorted(contacts, key=lambda contact: contact['Name'])
+    print('contacts were sorted')
+    print("---------------------------------")
+    return sort_contacts
+
+
 def storage(contacts):
     file = open("contact.csv", "w", newline="")
     writer = csv.DictWriter(file, ['Name','Number','Email'])
@@ -183,7 +190,10 @@ while True:
         phonepanel()
     
     elif choice == '5':
-        '''sort_contact()'''
+        if len(contacts) != 0:
+            contacts = sort_contact(contacts)
+        else:
+            print('there are not any contact')
         phonepanel()
 
     else:
