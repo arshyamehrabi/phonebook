@@ -24,7 +24,7 @@ def phonepanel():
 def add_contact(name,phoneNumber,email,contacts):
     if len(contacts) != 0:
         for contact in contacts:
-            if contact['Name'] == name and contact['Number'] == phoneNumber: 
+            if contact['Name'] == name or contact['Number'] == phoneNumber: 
                 print('Duplicate entry')
                 print("---------------------------------")
                 return
