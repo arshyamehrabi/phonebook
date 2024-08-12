@@ -3,6 +3,9 @@ import csv
 
 class Phone:
 
+    global contact_name
+    contact_name = []
+
     def __init__(self,name,phoneNumber,email):
         self.name = name
         self.phoneNumber = phoneNumber
@@ -12,7 +15,7 @@ class Phone:
     def add_contact(self,contacts):
         if len(contacts) != 0:
             for contact in contacts:
-                if contact['Number'] == self.phoneNumber or contact['Email'] == self.email:
+                if contact['Name'] == self.name: 
                     print('Duplicate entry')
                     print("---------------------------------")
                     return
@@ -30,8 +33,23 @@ class Phone:
             print("---------------------------------")
             return
         contacts.append({'Name': self.name, 'Number': self.phoneNumber, 'Email': self.email})
+        contact_name.append(self.name)
         print('Contact added')
         print("---------------------------------")
+    
+
+    def edit_contact(self,contacts):
+        edit_name = input('Enter name to edit: ')
+        if edit_name not in contact_name:
+            print('entry does not exist')
+            print("---------------------------------")
+            return
+        else:
+            option = 
+
+            
+
+
 
     
 

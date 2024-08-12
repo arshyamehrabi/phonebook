@@ -37,7 +37,7 @@ while True:
         phonepanel()
 
     if choice == '2':
-            break
+            phone.edit_contact(contacts)
 
 
 
