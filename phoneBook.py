@@ -194,6 +194,7 @@ while True:
             contacts = sort_contact(contacts)
         else:
             print('there are not any contact')
+            print("---------------------------------")
         phonepanel()
 
     else:
