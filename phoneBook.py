@@ -2,8 +2,8 @@ import csv
 import re
 
 contact_name = []
-contact_numner = []
-contact_gmail = []
+contact_number = []
+contact_email = []
 
 def phonepanel():
     print("1- Add Contact")
@@ -43,8 +43,8 @@ def add_contact(name,phoneNumber,email,contacts):
         return
     contacts.append({'Name': name, 'Number': phoneNumber, 'Email': email})
     contact_name.append(name)
-    contact_numner.append(phoneNumber)
-    contact_gmail.append(email)
+    contact_number.append(phoneNumber)
+    contact_email.append(email)
     print('Contact added')
     print("---------------------------------")
 
@@ -86,7 +86,46 @@ def edit_contact(contacts):
                 for contact in contacts:
                     if contact['Name'] == edit_name:
                         new_number = input('Enter new number: ')
-                        pass
+                        if new_number in contact_number: 
+                            print('Duplicate entry')
+                            print("---------------------------------")
+                            return
+                        else:
+                            contact_number.remove(contact['Number'])
+                            contact['Number'] = new_number
+                            contact_number.append(new_number)
+                            print('Changes were made')
+                            print("---------------------------------")
+                            return
+            
+            elif option == 'email':
+                for contact in contacts:
+                    if contact['Name'] == edit_name:
+                        new_email = input('Enter new email: ')
+                        if new_email in contact_email: 
+                            print('Duplicate entry')
+                            print("---------------------------------")
+                            return
+                        else:
+                            contact_email.remove(contact['Email'])
+                            contact['Email'] = new_number
+                            contact_email.append(new_number)
+                            print('Changes were made')
+                            print("---------------------------------")
+                            return
+            
+            
+def contact_info(contacts):
+    if len(contacts) != 0:
+        header = contacts[0].keys()
+        row = "{:<10}"*len(header)
+        print(row.format(*header))
+        print("-------------------------------------------------")
+        for contact in contacts:
+            print(row.format(*contact.values()))
+    else:
+        print("There is no contact")
+             
 
 
 file = open('contact.csv',newline='')
@@ -106,8 +145,9 @@ while True:
             edit_contact(contacts)
             phonepanel()
 
-    if choice == '6':
-        break
+    if choice == '4':
+        contact_info(contacts)
+    
 
 
 
