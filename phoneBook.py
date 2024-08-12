@@ -23,10 +23,11 @@ def phonepanel():
 
 def add_contact(name,phoneNumber,email,contacts):
     if len(contacts) != 0:
-        if name in contact_name: 
-            print('Duplicate entry')
-            print("---------------------------------")
-            return
+        for contact in contacts:
+            if contact['Name'] == name and contact['Number'] == phoneNumber: 
+                print('Duplicate entry')
+                print("---------------------------------")
+                return
     
     if not re.match(r'^[a-zA-Z\s]+$', name):
         print('name is not correct')
