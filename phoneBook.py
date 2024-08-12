@@ -122,9 +122,18 @@ def edit_contact(contacts):
                             return
                         
 def del_contact(name,contacts):
-    pass
-            
-            
+    if name not in contact_name:
+        print('name does not exist')
+    else:
+        for contact in contacts:
+            if contact['Name'] == name:
+                contact_number.remove(contact['Number'])
+                contact_email.remove(contact['Email'])
+                contacts.remove(contact)
+                contact_name.remove(name)
+                break
+
+                 
 def contact_info(contacts):
     if len(contacts) != 0:
         header = contacts[0].keys()
@@ -160,7 +169,7 @@ while True:
     if choice == '3':
         del_name = input('Enter name to delete: ')
         del_contact(del_name,contacts)
-
+        phonepanel()
 
     if choice == '4':
         contact_info(contacts)
