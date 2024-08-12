@@ -45,7 +45,25 @@ class Phone:
             print("---------------------------------")
             return
         else:
-            option = 
+            option = input('Which option do you want to edit (name/number/email): ')
+            if option not in ['name','number','email']:
+                print('entry is wrong')
+                print("---------------------------------")
+                return
+            else:
+                if option == 'name':
+                    for contact in contacts:
+                        if contact['Name'] == edit_name:
+                            new_name = input('Enter new name: ')
+                            if not re.match(r'^[a-zA-Z\s]+$', new_name):
+                                print('name is not correct')
+                                print("---------------------------------")
+                                return
+                            else:
+                                contact['Name'] == new_name
+                                contact_name.remove(edit_name)
+
+
 
             
 
