@@ -147,7 +147,8 @@ def contact_info(contacts):
         print("There is no contact")
         print("---------------------------------")
 
-def
+'''def sort_contact()'''
+def storage(contacts):
              
 
 
@@ -164,20 +165,28 @@ while True:
         add_contact(name,phoneNumber,email,contacts)
         phonepanel()
 
-    if choice == '2':
+    elif choice == '2':
         edit_contact(contacts)
         phonepanel()
 
-    if choice == '3':
+    elif choice == '3':
         del_name = input('Enter name to delete: ')
         del_contact(del_name,contacts)
         phonepanel()
 
-    if choice == '4':
+    elif choice == '4':
         contact_info(contacts)
         phonepanel()
     
-    if choice == '5':
+    elif choice == '5':
+        '''sort_contact()'''
+        phonepanel()
+
+    else:
+        storage(contacts)
+        break
+
+
 
     
 
