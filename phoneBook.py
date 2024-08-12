@@ -44,8 +44,49 @@ def add_contact(name,phoneNumber,email,contacts):
     contacts.append({'Name': name, 'Number': phoneNumber, 'Email': email})
     contact_name.append(name)
     contact_numner.append(phoneNumber)
+    contact_gmail.append(email)
     print('Contact added')
     print("---------------------------------")
+
+
+def edit_contact(contacts):
+    edit_name = input('Enter name to edit: ')
+    if edit_name not in contact_name:
+        print('entry does not exist')
+        print("---------------------------------")
+        return
+    else:
+        option = input('Which option do you want to edit (name/number/email): ')
+        if option not in ['name','number','email']:
+            print('entry is wrong')
+            print("---------------------------------")
+            return
+        else:
+            if option == 'name':
+                for contact in contacts:
+                    if contact['Name'] == edit_name:
+                        new_name = input('Enter new name: ')
+                        if new_name in contact_name: 
+                            print('Duplicate entry')
+                            print("---------------------------------")
+                            return
+                        if not re.match(r'^[a-zA-Z\s]+$', new_name):
+                            print('name is not correct')
+                            print("---------------------------------")
+                            return
+                        else:
+                            contact['Name'] = new_name
+                            contact_name.remove(edit_name)
+                            contact_name.append(new_name)
+                            print('Changes were made')
+                            print("---------------------------------")
+                            return
+            
+            elif option == 'number':
+                for contact in contacts:
+                    if contact['Name'] == edit_name:
+                        new_number = input('Enter new number: ')
+                        pass
 
 
 file = open('contact.csv',newline='')
@@ -62,7 +103,7 @@ while True:
         phonepanel()
 
     if choice == '2':
-            phone.edit_contact(contacts)
+            edit_contact(contacts)
             phonepanel()
 
     if choice == '6':
