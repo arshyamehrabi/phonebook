@@ -62,6 +62,11 @@ class Phone:
                             else:
                                 contact['Name'] == new_name
                                 contact_name.remove(edit_name)
+                                contact_name.append(new_name)
+                                print('Changes were made')
+                                print("---------------------------------")
+                                return
+
 
 
 
