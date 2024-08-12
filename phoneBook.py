@@ -1,10 +1,6 @@
 import csv
 import re
 
-cont_name = []
-cont_number = []
-cont_email = []
-
 def phonepanel():
     print("1- Add Contact")
     print("2- Edit Contact")
@@ -42,9 +38,6 @@ def add_contact(name,phoneNumber,email,contacts):
         print("---------------------------------")
         return
     contacts.append({'Name': name, 'Number': phoneNumber, 'Email': email})
-    contact_name.append(name)
-    contact_number.append(phoneNumber)
-    contact_email.append(email)
     print('Contact added')
     print("---------------------------------")
 
@@ -78,8 +71,8 @@ def edit_contact(contacts):
                 
                 elif option == 'number':
                     new_number = input('Enter new number: ')
-                    for contact in contacts:
-                        if contact['Number'] == new_number: 
+                    for cont2 in contacts:
+                        if cont2['Number'] == new_number: 
                             print('Duplicate entry')
                             print("---------------------------------")
                             return
@@ -95,8 +88,8 @@ def edit_contact(contacts):
                 
                 elif option == 'email':
                     new_email = input('Enter new email: ')
-                    for contact in contacts:
-                        if contact['Email'] == new_email:
+                    for cont3 in contacts:
+                        if cont3['Email'] == new_email:
                             print('Duplicate entry')
                             print("---------------------------------")
                             return
@@ -153,11 +146,6 @@ def storage(contacts):
 file = open('contact.csv',newline='')
 data = csv.DictReader(file)
 contacts = list(data)
-
-for contact in contacts:
-    cont_name.append(contact['Name'])
-    cont_number.append(contact['Number'])
-    cont_email.append(contact['Email'])
 
 phonepanel()
 while True:
