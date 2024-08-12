@@ -1,9 +1,9 @@
 import csv
 import re
 
-contact_name = []
-contact_number = []
-contact_email = []
+cont_name = []
+cont_number = []
+cont_email = []
 
 def phonepanel():
     print("1- Add Contact")
@@ -66,15 +66,15 @@ def edit_contact(contacts):
                             print('Duplicate entry')
                             print("---------------------------------")
                             return
-                        elif not re.match(r'^[a-zA-Z\s]+$', new_name):
-                            print('name is not correct')
-                            print("---------------------------------")
-                            return
-                        else:
-                            contact['Name'] = new_name
-                            print('Changes were made')
-                            print("---------------------------------")
-                            return
+                    if not re.match(r'^[a-zA-Z\s]+$', new_name):
+                        print('name is not correct')
+                        print("---------------------------------")
+                        return
+                    else:
+                        contact['Name'] = new_name
+                        print('Changes were made')
+                        print("---------------------------------")
+                        return
                 
                 elif option == 'number':
                     new_number = input('Enter new number: ')
@@ -83,15 +83,15 @@ def edit_contact(contacts):
                             print('Duplicate entry')
                             print("---------------------------------")
                             return
-                        elif not re.match(r'^\d{11}$', new_number):
-                            print('number is not correct')
-                            print("---------------------------------")
-                            return
-                        else:
-                            contact['Number'] = new_number
-                            print('Changes were made')
-                            print("---------------------------------")
-                            return
+                    if not re.match(r'^\d{11}$', new_number):
+                        print('number is not correct')
+                        print("---------------------------------")
+                        return
+                    else:
+                        contact['Number'] = new_number
+                        print('Changes were made')
+                        print("---------------------------------")
+                        return
                 
                 elif option == 'email':
                     new_email = input('Enter new email: ')
@@ -100,15 +100,15 @@ def edit_contact(contacts):
                             print('Duplicate entry')
                             print("---------------------------------")
                             return
-                        elif not re.match(r'[^@]+@[^@]+\.[^@]+', new_email):
-                            print('email is not correct')
-                            print("---------------------------------")
-                            return
-                        else:
-                            contact['Email'] = new_email
-                            print('Changes were made')
-                            print("---------------------------------")
-                            return
+                    if not re.match(r'[^@]+@[^@]+\.[^@]+', new_email):
+                        print('email is not correct')
+                        print("---------------------------------")
+                        return
+                    else:
+                        contact['Email'] = new_email
+                        print('Changes were made')
+                        print("---------------------------------")
+                        return
     print('entry does not exist')
     print("---------------------------------")
     return 
@@ -153,6 +153,12 @@ def storage(contacts):
 file = open('contact.csv',newline='')
 data = csv.DictReader(file)
 contacts = list(data)
+
+for contact in contacts:
+    cont_name.append(contact['Name'])
+    cont_number.append(contact['Number'])
+    cont_email.append(contact['Email'])
+
 phonepanel()
 while True:
     if choice == '1':
