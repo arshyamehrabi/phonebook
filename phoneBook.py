@@ -122,12 +122,12 @@ def del_contact(name,contacts):
 def contact_info(contacts):
     if len(contacts) != 0:
         header = contacts[0].keys()
-        row = "{:<15}"*len(header)
+        row = "{:<22}"*len(header)
         print(row.format(*header))
-        print("-------------------------------------------------------")
+        print("-------------------------------------------------------------------------")
         for contact in contacts:
             print(row.format(*contact.values()))
-        print("-------------------------------------------------------")
+        print("-------------------------------------------------------------------------")
     else:
         print("There is no contact")
         print("---------------------------------")
