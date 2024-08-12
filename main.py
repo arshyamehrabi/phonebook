@@ -38,6 +38,10 @@ while True:
 
     if choice == '2':
             phone.edit_contact(contacts)
+            phonepanel()
+
+    if choice == '6':
+         break
 
 
 

@@ -5,6 +5,8 @@ class Phone:
 
     global contact_name
     contact_name = []
+    global contact_numner
+    contact_numner = []
 
     def __init__(self,name,phoneNumber,email):
         self.name = name
@@ -13,12 +15,13 @@ class Phone:
 
     
     def add_contact(self,contacts):
+        
+        print(contact_name)
         if len(contacts) != 0:
-            for contact in contacts:
-                if contact['Name'] == self.name: 
-                    print('Duplicate entry')
-                    print("---------------------------------")
-                    return
+            if self.name in contact_name: 
+                print('Duplicate entry')
+                print("---------------------------------")
+                return
         
         if not re.match(r'^[a-zA-Z\s]+$', self.name):
             print('name is not correct')
@@ -60,12 +63,19 @@ class Phone:
                                 print("---------------------------------")
                                 return
                             else:
-                                contact['Name'] == new_name
+                                contact['Name'] = new_name
                                 contact_name.remove(edit_name)
                                 contact_name.append(new_name)
                                 print('Changes were made')
                                 print("---------------------------------")
                                 return
+                
+                elif option == 'number':
+                    for contact in contacts:
+                        if contact['Name'] == edit_name:
+                            new_number = input('Enter new number: ')
+
+
 
 
 
