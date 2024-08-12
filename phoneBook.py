@@ -120,6 +120,9 @@ def edit_contact(contacts):
                             print('Changes were made')
                             print("---------------------------------")
                             return
+                        
+def del_contact(name,contacts):
+    pass
             
             
 def contact_info(contacts):
@@ -151,8 +154,13 @@ while True:
         phonepanel()
 
     if choice == '2':
-            edit_contact(contacts)
-            phonepanel()
+        edit_contact(contacts)
+        phonepanel()
+
+    if choice == '3':
+        del_name = input('Enter name to delete: ')
+        del_contact(del_name,contacts)
+
 
     if choice == '4':
         contact_info(contacts)
