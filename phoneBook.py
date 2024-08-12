@@ -60,77 +60,67 @@ def edit_contact(contacts):
                 return
             else:
                 if option == 'name':
-                        new_name = input('Enter new name: ')
-                        for cont in contacts:
-                            if cont['Name'] == new_name:
-                                print('Duplicate entry')
-                                print("---------------------------------")
-                                return
-                            elif not re.match(r'^[a-zA-Z\s]+$', new_name):
-                                print('name is not correct')
-                                print("---------------------------------")
-                                return
-                            else:
-                                contact['Name'] = new_name
-                                print('Changes were made')
-                                print("---------------------------------")
-                                return
+                    new_name = input('Enter new name: ')
+                    for cont in contacts:
+                        if cont['Name'] == new_name:
+                            print('Duplicate entry')
+                            print("---------------------------------")
+                            return
+                        elif not re.match(r'^[a-zA-Z\s]+$', new_name):
+                            print('name is not correct')
+                            print("---------------------------------")
+                            return
+                        else:
+                            contact['Name'] = new_name
+                            print('Changes were made')
+                            print("---------------------------------")
+                            return
                 
                 elif option == 'number':
+                    new_number = input('Enter new number: ')
                     for contact in contacts:
-                        if contact['Name'] == edit_name:
-                            new_number = input('Enter new number: ')
-                            if new_number in contact_number: 
-                                print('Duplicate entry')
-                                print("---------------------------------")
-                                return
-                            if not re.match(r'^\d{11}$', new_number):
-                                print('number is not correct')
-                                print("---------------------------------")
-                                return
-                            else:
-                                contact_number.remove(contact['Number'])
-                                contact['Number'] = new_number
-                                contact_number.append(new_number)
-                                print('Changes were made')
-                                print("---------------------------------")
-                                return
+                        if contact['Number'] == new_number: 
+                            print('Duplicate entry')
+                            print("---------------------------------")
+                            return
+                        elif not re.match(r'^\d{11}$', new_number):
+                            print('number is not correct')
+                            print("---------------------------------")
+                            return
+                        else:
+                            contact['Number'] = new_number
+                            print('Changes were made')
+                            print("---------------------------------")
+                            return
                 
                 elif option == 'email':
+                    new_email = input('Enter new email: ')
                     for contact in contacts:
-                        if contact['Name'] == edit_name:
-                            new_email = input('Enter new email: ')
-                            if new_email in contact_email: 
-                                print('Duplicate entry')
-                                print("---------------------------------")
-                                return
-                            if not re.match(r'[^@]+@[^@]+\.[^@]+', new_email):
-                                print('email is not correct')
-                                print("---------------------------------")
-                                return
-                            else:
-                                contact_email.remove(contact['Email'])
-                                contact['Email'] = new_email
-                                contact_email.append(new_email)
-                                print('Changes were made')
-                                print("---------------------------------")
-                                return
+                        if contact['Email'] == new_email:
+                            print('Duplicate entry')
+                            print("---------------------------------")
+                            return
+                        elif not re.match(r'[^@]+@[^@]+\.[^@]+', new_email):
+                            print('email is not correct')
+                            print("---------------------------------")
+                            return
+                        else:
+                            contact['Email'] = new_email
+                            print('Changes were made')
+                            print("---------------------------------")
+                            return
         else:
             print('entry does not exist')
             print("---------------------------------")
             return
                         
 def del_contact(name,contacts):
-    if name not in contact_name:
-        print('name does not exist')
-    else:
-        for contact in contacts:
-            if contact['Name'] == name:
-                contact_number.remove(contact['Number'])
-                contact_email.remove(contact['Email'])
-                contacts.remove(contact)
-                contact_name.remove(name)
-                break
+    for contact in contacts:
+        if contact['Name'] == name:
+            contacts.remove(contact)
+        else:
+            print('name does not exist')
+
 
                  
 def contact_info(contacts):
