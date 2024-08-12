@@ -134,7 +134,7 @@ def contact_info(contacts):
 
 
 def sort_contact(contacts):
-    sort_contacts = sorted(contacts, key=lambda contact: contact['Name'])
+    sort_contacts = sorted(contacts, key=lambda contact: contact['Name'].lower())
     print('contacts were sorted')
     print("---------------------------------")
     return sort_contacts
