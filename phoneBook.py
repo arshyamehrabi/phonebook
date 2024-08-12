@@ -191,13 +191,6 @@ while True:
 
 
 
-    
-
-
-
-print(contacts)
-
-
 
     
 
