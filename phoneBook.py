@@ -52,6 +52,7 @@ def add_contact(name,phoneNumber,email,contacts):
 def edit_contact(contacts):
     edit_name = input('Enter name to edit: ')
     for contact in contacts:
+        print(contacts)
         if contact['Name'] == edit_name:
             option = input('Which option do you want to edit (name/number/email): ')
             if option not in ['name','number','email']:
