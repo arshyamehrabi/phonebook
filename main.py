@@ -1,3 +1,11 @@
+from phoneBook import phone
+import csv
+
+
+file = open('contact.csv',newline='')
+data = csv.DictReader(file)
+contacts = list(data)
+
 def phonepanel():
     print("1- Add Contact")
     print("2- Edit Contact")
@@ -11,6 +19,9 @@ def phonepanel():
         print('not valid')
         phonepanel()
     return choice
+
+
+print(contacts)
 
 
 
